@@ -31,7 +31,10 @@ pythonがインストールされていること
 
 ### 「.exe」で使用する場合 (非推奨)
 
-1. ダウンロードフォルダにある「.exe」を実行 
+1. 下記よりリリースファイルをダウンロード
+　　https://github.com/Trend-Research-and-Trial/Screen-Captor-Sakura/releases
+
+2. ダウンロードフォルダにある「.exe」を実行 
 
 ※「.exe」は最新バージョンでない可能性があります.  
 ※ 動作環境によっては、「.exe」の実行が制限されている場合があります.  
