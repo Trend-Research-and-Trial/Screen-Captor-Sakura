@@ -1,5 +1,4 @@
 import tkinter
-from app.manual import Manual
 import pyautogui  # キーボード操作を扱う外部ライブラリ
 from PIL import Image, ImageTk, ImageGrab, ImageDraw  # 外部ライブラリ
 import pynput
@@ -17,7 +16,10 @@ from time import sleep
 
 class ManualCreation:
 
-    def __init__(self, file_name):
+    def __init__(self, manual):
+        # マニュアル作成
+        self.manual = manual
+
         # 押下したボタンを監視する
         listener = keyboard.Listener(
             on_release=self.__check_pressed_key
@@ -36,9 +38,6 @@ class ManualCreation:
         self.rectangle_end_x = 0
         self.rectangle_end_y = 0
         self.rectangle_count = 0
-
-        # マニュアル作成
-        self.manual = Manual(file_name)
 
         self.root = tkinter.Tk()
         self.root.title(TITLE)
