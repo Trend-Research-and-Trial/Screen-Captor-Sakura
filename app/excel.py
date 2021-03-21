@@ -1,7 +1,6 @@
 import openpyxl
 from openpyxl.styles import Font
 import math
-import os
 from settings import OUTPUT
 
 class Excel:
@@ -12,29 +11,22 @@ class Excel:
         column int:
         mode int: 0 => 新規作成モード, 1 => 追記モード
     """
-    def __init__(self, path, row=1, column=1, mode=0):
+    def __init__(self, path, row=1, column=1, cell=None, mode=0):
 
-        # pathからのタイトル取得とpath編集を行う
-        title = path.split("/")[-1]
-        if len(title.split(".")) > 1:
-            title = title.split(".")[0]
-        else:
-            path = path + '.xlsx'
         self.path = path
-
-        self.next_row = row
-        self.next_column = column
 
         if mode==0:
             # 0の場合：新規作成モード
             # Excelファイルの新規作成
             self.book = openpyxl.Workbook()
+            self.__initializeCellPosition(row, column, cell)
 
             sheet, current_cell = self.__getSheetAndCell()
 
             sheet.title = "手順書" 
-            # 指定したセルに文字列を入力する
-            current_cell.value = title
+
+            # 指定したセルにタイトルを入力する
+            current_cell.value = self.path.split("/")[-1].split(".")[0]
             
             self.next_row = row + 2
             self.next_column = column
@@ -42,10 +34,9 @@ class Excel:
         elif mode == 1:
             # 1の場合：追記モード
             self.book = openpyxl.load_workbook(self.path)
+            self.__initializeCellPosition(row, column, cell)
 
-        if not os.path.isdir(OUTPUT):
-            os.makedirs(OUTPUT)
-        self.book.save(OUTPUT + '/' + self.path)
+        self.book.save(self.path)
 
     def paste(self, value):
         # シートの取得とシート名の変更
@@ -70,10 +61,17 @@ class Excel:
     def __save(self, row_to_add=0, column_to_add=0):
         self.next_row += row_to_add
         self.next_column += column_to_add
-
-        self.book.save('./output/' + self.path)
+        self.book.save(self.path)
 
     def __getSheetAndCell(self):
         sheet = self.book.active
         current_cell = sheet.cell(self.next_row, self.next_column)
         return sheet, current_cell
+    
+    def __initializeCellPosition(self, row, column, cell):
+        self.next_row = row
+        self.next_column = column
+        if cell != None:
+            sheet, _ = self.__getSheetAndCell()
+            self.next_row = sheet[cell].row
+            self.next_column = sheet[cell].column
