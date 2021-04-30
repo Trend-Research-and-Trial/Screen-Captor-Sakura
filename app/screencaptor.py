@@ -14,7 +14,7 @@ import win32gui
 from time import sleep
 from settings import LINE_WIDTH
 
-class ManualCreation:
+class ScreenCaptor:
 
     def __init__(self, manual):
         # マニュアル作成

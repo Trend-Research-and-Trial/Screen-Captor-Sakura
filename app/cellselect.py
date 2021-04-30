@@ -1,8 +1,8 @@
 import tkinter
-from app.manualcreation import ManualCreation
+from app.screencaptor import ScreenCaptor
 from PIL import Image, ImageTk
 from settings import ASSETS_PATH, TITLE
-from app.manual import Manual
+from app.services.manual import Manual
 
 class CellSelect:
     def __init__(self, path):
@@ -32,5 +32,5 @@ class CellSelect:
     def __confirm(self):
         cell = self.cell_entry.get()
         self.root.destroy()
-        ManualCreation(Manual(self.path, mode=1, cell=cell))
+        ScreenCaptor(Manual(self.path, mode=1, cell=cell))
         self.root.quit()

@@ -1,12 +1,12 @@
 import tkinter
 from tkinter import messagebox
-from app.manualcreation import ManualCreation
+from app.screencaptor import ScreenCaptor
 from app.cellselect import CellSelect
 from PIL import Image, ImageTk
 import webbrowser
 from settings import ASSETS_PATH, TITLE
 import os, tkinter.filedialog
-from app.manual import Manual
+from app.services.manual import Manual
 
 class Top:
     def __init__(self):
@@ -62,7 +62,7 @@ class Top:
         manual_title = self.title_text.get()
 
         self.root.destroy()
-        ManualCreation(Manual(manual_title))
+        ScreenCaptor(Manual(manual_title))
         self.root.quit()
     
     def __edit(self):
