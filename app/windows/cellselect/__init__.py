@@ -1,4 +1,4 @@
-from app.screencaptor import ScreenCaptor
+from app.windows.screencaptor import ScreenCaptor
 from app.services.manual import Manual
 from app.windows.cellselect.window import Window
 
