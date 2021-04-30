@@ -23,8 +23,6 @@ class Excel:
 
             sheet, current_cell = self.__getSheetAndCell()
 
-            sheet.title = "手順書" 
-
             # 指定したセルにタイトルを入力する
             current_cell.value = self.path.split("/")[-1].split(".")[0]
             
