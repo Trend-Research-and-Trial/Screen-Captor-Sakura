@@ -1,22 +1,23 @@
 import tkinter
 from tkinter import messagebox
-from app.manualcreation import ManualCreation
-from app.cellselect import CellSelect
 from PIL import Image, ImageTk
 import webbrowser
-from settings import ASSETS_PATH, TITLE
-import os, tkinter.filedialog
-from app.manual import Manual
+from settings import ASSETS_PATH
+from app.windows.base import Base
 
-class Top:
-    def __init__(self):
-        self.root = tkinter.Tk()
+class Window(Base):
+    pass
 
-        self.root.title(TITLE)
-        self.root.configure(background='#FFFFFF')
-        self.root.iconbitmap(ASSETS_PATH + '/trat.ico')
+    def create_button(self, command):
+        create_button = tkinter.Button(self.root, width=12, text = '新規作成',background='#ff6b91', foreground = '#FFFFFF',command = command, font=("MSゴシック",15))
+        create_button.grid(row= 2, column=0, padx=40, pady=40, sticky=tkinter.W)
+    
+    def edit_button(self, command):
+        edit_button = tkinter.Button(self.root, text = '既存のファイルに追加',background='#ff6b91', foreground = '#FFFFFF',command = command, font=("MSゴシック",15))
+        edit_button.grid(row= 2, column=1, padx=0, pady=40, sticky=tkinter.W)
 
-        #新規作成用部品生成
+    def display(self):
+         #新規作成用部品生成
         title_label = tkinter.Label(text='ファイル名を入力',background='#FFFFFF', foreground='#ff6b91', font=("MSゴシック",15))
         
         # 画像を表示するためのキャンバスの作成（黒で表示）
@@ -27,8 +28,7 @@ class Top:
 
         self.title_text = tkinter.Entry(self.root, width=40,background='#FFFFFF', foreground = 'black', font=("MSゴシック",25))
 
-        create_button = tkinter.Button(self.root, width=12, text = '新規作成',background='#ff6b91', foreground = '#FFFFFF',command =self.__create, font=("MSゴシック",15))
-        edit_button = tkinter.Button(self.root, text = '既存のファイルに追加',background='#ff6b91', foreground = '#FFFFFF',command =self.__edit, font=("MSゴシック",15))
+        edit_button = tkinter.Button(self.root, text = '既存のファイルに追加',background='#ff6b91', foreground = '#FFFFFF', font=("MSゴシック",15))
         extention_label = tkinter.Label(text='.xlsx',background='#FFFFFF', foreground='#ff6b91', font=("MSゴシック",15))
 
         # 画像を表示するためのキャンバスの作成（黒で表示）
@@ -45,8 +45,6 @@ class Top:
         title_label.grid(row= 0, column=0, columnspan=2, padx=40, pady=40, sticky=tkinter.W)
         python_canvas.grid(row= 0, column=2, padx=40, pady=40, sticky=tkinter.E)
         self.title_text.grid(row= 1, column=0, columnspan=3, padx=40, pady=0, sticky=tkinter.W)
-        create_button.grid(row= 2, column=0, padx=40, pady=40, sticky=tkinter.W)
-        edit_button.grid(row= 2, column=1, padx=0, pady=40, sticky=tkinter.W)
         extention_label.grid(row= 2, column=2, padx=40, pady=0, sticky=tkinter.E + tkinter.N)
         git_repository_canvas.grid(row=3, rowspan=2, column=0, padx=40, sticky=tkinter.E) 
         git_repository_label.grid(row= 3, column=1, columnspan=2, padx=0, pady=5, sticky=tkinter.W)
@@ -57,19 +55,5 @@ class Top:
 
         self.root.mainloop()
 
-    def __create(self):
-        messagebox.showinfo('確認', '処理を開始します\n画面キャプチャをとる場合はPrtScreenキーを押してください\nツールを終了する場合はEscキーを押してください')
-        manual_title = self.title_text.get()
-
-        self.root.destroy()
-        ManualCreation(Manual(manual_title))
-        self.root.quit()
-    
-    def __edit(self):
-        fTyp = [("","*")]
-        iDir = os.path.abspath(os.path.dirname(__file__))
-        file = tkinter.filedialog.askopenfilename(filetypes = fTyp,initialdir = iDir)
-
-        self.root.destroy()
-        CellSelect(file)
-        self.root.quit()
+    def get_title_text(self):
+        return self.title_text.get()

@@ -1,4 +1,4 @@
-from app.excel import Excel
+from app.services.excel import Excel
 from PIL import Image
 from settings import OUTPUT
 import os
