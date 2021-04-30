@@ -12,7 +12,7 @@ import shutil
 from settings import ASSETS_PATH, TMP_IMAGE_PATH, TITLE
 import win32gui
 from time import sleep
-
+from settings import LINE_WIDTH
 
 class ManualCreation:
 
@@ -158,7 +158,7 @@ class ManualCreation:
                 ]
                 self.draw = ImageDraw.Draw(self.img)
                 self.draw.rectangle((self.rectangle_start_x, self.rectangle_start_y, self.rectangle_end_x, self.rectangle_end_y),
-                                    outline=(255, 0, 0), width=9)
+                                    outline=(255, 0, 0), width=LINE_WIDTH*2)
             self.resized_img = self.img.resize(size=(int(self.img.width *self.SCALED_POINT_FOREXCEL),
                                                 int(self.img.height *self.SCALED_POINT_FOREXCEL)), resample=Image.BILINEAR)
 
@@ -188,7 +188,9 @@ class ManualCreation:
                                       event.x,
                                       event.y,
                                       outline="red",
-                                      tag=f'red_rectangle{self.rectangle_count}')
+                                      tag=f'red_rectangle{self.rectangle_count}',
+                                      width=LINE_WIDTH
+                                      )
         # グローバル変数に座標を格納
         self.scaled_rectangle_start_x, self.scaled_rectangle_start_y = event.x, event.y
 
