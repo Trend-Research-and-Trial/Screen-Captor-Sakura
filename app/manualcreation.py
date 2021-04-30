@@ -103,8 +103,16 @@ class ManualCreation:
         # 入力されたキーに応じて処理
         # スクリーンショットキーで最前面に移動
         if key == Key.print_screen:
-            sleep(0.5)
-            self.__print_screen()
+            MAX_RETRY = 10
+            for i in range(MAX_RETRY + 1):
+                try:
+                    sleep(0.5)
+                    self.__print_screen()
+                    return
+                except OSError as e:
+                    if MAX_RETRY == i:
+                            raise e
+
         # Escで閉じる
         if key == Key.esc:
             messagebox.showinfo('確認', '処理を終了します')
