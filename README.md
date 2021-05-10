@@ -66,8 +66,7 @@ pythonがインストールされていること
 
 
 ## 制約事項
-- 複数のディスプレイで使用しているときも、スクリーンショットが取れるのはメインディスプレイのみ
-- 赤枠は画像に埋め込むため、複数の枠をつけたい場合はツール操作完了後にExcelで赤枠を追加する
+- アプリ実行中は、作成したExcelファイルの修正不可
 
 # Request & Bug report
 - [githubのissueを発行する](https://github.com/Trend-Research-and-Trial/Screen-Captor-Sakura/issues/new)
