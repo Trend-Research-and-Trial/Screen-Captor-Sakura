@@ -1,6 +1,6 @@
 # Screen Captor SAKURA
 SAKURAは手順書作成等の、スクリーンショットを行うためのツールです.  
-オペレーションを行いながら、最小限の操作でスクリーンショットをExcelへ記録すことができます.
+オペレーションを行いながら、最小限の操作でスクリーンショットをExcelへ記録することができます.
 
 ![image](https://user-images.githubusercontent.com/50811989/110207576-ceea8600-7ec7-11eb-8b63-829d5514343c.png)
 
@@ -20,10 +20,14 @@ pythonがインストールされていること
 #### 導入手順
 1. 資産をローカルPCへダウンロードする
     - Gitからクローンする、または、zipファイルをダウンロード
+    > - Gitからクローンする場合のコマンド  
+    > `git clone https://github.com/Trend-Research-and-Trial/Screen-Captor-Sakura.git`
+    > - [zipファイルのダウンロード](https://github.com/Trend-Research-and-Trial/Screen-Captor-Sakura/archive/refs/heads/master.zip)
 
 2. pythonライブラリ各種インストール
     - 下記コマンドで必要ライブラリをインストール  
-    `pip install -r requirements.txt` 
+    `pip install -r requirements.txt`  
+    (`requirements.txt` ファイルがあるディレクトリで実行すること)
 
 3. コマンドプロンプトからアプリ実行
     - ダウンロード先のディレクトリで下記コマンドを実行  
@@ -62,8 +66,7 @@ pythonがインストールされていること
 
 
 ## 制約事項
-- 複数のディスプレイで使用しているときも、スクリーンショットが取れるのはメインディスプレイのみ
-- 赤枠は画像に埋め込むため、複数の枠をつけたい場合はツール操作完了後にExcelで赤枠を追加する
+- アプリ実行中は、作成したExcelファイルの修正不可
 
 # Request & Bug report
 - [githubのissueを発行する](https://github.com/Trend-Research-and-Trial/Screen-Captor-Sakura/issues/new)
