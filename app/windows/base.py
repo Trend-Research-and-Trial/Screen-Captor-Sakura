@@ -6,7 +6,7 @@ class Base:
         self.root = tkinter.Tk()
         self.root.title(TITLE)
         self.root.configure(background='#FFFFFF')
-        self.root.iconbitmap(ASSETS_PATH + '/trat.ico')
+        self.root.iconbitmap(ASSETS_PATH + '/scs.ico')
 
     def destroy(self):
         self.root.destroy()
