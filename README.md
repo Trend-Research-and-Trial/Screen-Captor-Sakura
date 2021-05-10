@@ -20,13 +20,13 @@ pythonがインストールされていること
 #### 導入手順
 1. 資産をローカルPCへダウンロードする
     - Gitからクローンする、または、zipファイルをダウンロード
-    > - Gitからクローンする場合のコマンド
+    > - Gitからクローンする場合のコマンド  
     > `git clone https://github.com/Trend-Research-and-Trial/Screen-Captor-Sakura.git`
     > - [zipファイルのダウンロード](https://github.com/Trend-Research-and-Trial/Screen-Captor-Sakura/archive/refs/heads/master.zip)
 
 2. pythonライブラリ各種インストール
     - 下記コマンドで必要ライブラリをインストール  
-    `pip install -r requirements.txt` 
+    `pip install -r requirements.txt`  
     (`requirements.txt` ファイルがあるディレクトリで実行すること)
 
 3. コマンドプロンプトからアプリ実行
