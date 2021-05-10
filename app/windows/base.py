@@ -19,6 +19,6 @@ class Base:
 
     def withdraw(self):
         self.root.withdraw()
-    
-    def winfo_viewable():
+
+    def winfo_viewable(self):
         return self.root.winfo_viewable()
