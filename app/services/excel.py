@@ -63,7 +63,9 @@ class Excel:
 
     def __getSheetAndCell(self):
         sheet = self.book.active
+        sheet.sheet_view.showGridLines = False
         current_cell = sheet.cell(self.next_row, self.next_column)
+        current_cell.font = Font(name='メイリオ')
         return sheet, current_cell
     
     def __initializeCellPosition(self, row, column, cell):
