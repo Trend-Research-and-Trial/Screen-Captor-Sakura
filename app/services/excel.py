@@ -19,11 +19,13 @@ class Excel:
             # 0の場合：新規作成モード
             # Excelファイルの新規作成
             self.book = openpyxl.Workbook()
+            self.book.worksheets[0].sheet_view.showGridLines = False
             self.__initializeCellPosition(row, column, cell)
 
             sheet, current_cell = self.__getSheetAndCell()
 
             # 指定したセルにタイトルを入力する
+            current_cell.font = Font(name ='Meiryo UI')
             current_cell.value = self.path.split("/")[-1].split(".")[0]
             
             self.next_row = row + 2
@@ -36,11 +38,13 @@ class Excel:
 
         self.book.save(self.path)
 
-    def paste(self, value):
+    def paste(self, value, mode):
         # シートの取得とシート名の変更
         _, current_cell = self.__getSheetAndCell()
 
         # 指定したセルに文字列を入力する
+        if mode==0:
+            current_cell.font = Font(name = 'Meiryo UI')
         current_cell.value = value
         
         self.__save(row_to_add=2)

@@ -12,5 +12,5 @@ class CellSelect:
     def __confirm(self):
         cell = self.window.get_cell_entry()
         self.window.destroy()
-        ScreenCaptor(Manual(self.path, mode=1, cell=cell))
+        ScreenCaptor(Manual(self.path, mode=1, cell=cell),mode=1)
         self.window.quit()
