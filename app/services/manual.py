@@ -19,8 +19,8 @@ class Manual:
             
         self.excel = Excel(path, row, column, cell, mode)
 
-    def add(self, description, image):
-        self.excel.paste(description)
+    def add(self, description, image, mode):
+        self.excel.paste(description, mode)
 
         img = Image.open(image)
         width, height = img.size

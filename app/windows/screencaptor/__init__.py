@@ -13,7 +13,7 @@ from app.windows.screencaptor.window import Window
 from app.windows.screencaptor.setting import SCALED_POINT, SCALED_POINT_FOREXCEL
 
 class ScreenCaptor:
-    def __init__(self, manual):
+    def __init__(self, manual, mode=0):
         # マニュアル作成
         self.manual = manual
 
@@ -36,7 +36,7 @@ class ScreenCaptor:
 
         self.window = Window()
         self.window.canvas(self.__start_drawing_rectangle, self.__draw_rectangle)
-        self.window.next_button(self.__next)
+        self.window.next_button(self.__next, mode)
         self.window.rollback_button(self.__rollback)
         self.window.cancel_button(self.__cancel)
         self.window.display()
@@ -92,7 +92,7 @@ class ScreenCaptor:
         else:
             print('failed grab print screen image')
 
-    def __next(self):
+    def __next(self, mode):
         # "red_rectangle"タグの画像の座標を元の縮尺に戻して取得
         for rectangle_count in range(self.rectangle_count):
             canvas = self.window.get_canvas()
@@ -110,7 +110,7 @@ class ScreenCaptor:
             os.makedirs(TMP_IMAGE_PATH)
         file_name = f'{TMP_IMAGE_PATH}/{uuid.uuid4()}.png'
         self.resized_img.save(file_name, quality=95)
-        self.manual.add(self.window.comment_text.get(), file_name)
+        self.manual.add(self.window.comment_text.get(), file_name, mode)
 
         self.__clear()
 

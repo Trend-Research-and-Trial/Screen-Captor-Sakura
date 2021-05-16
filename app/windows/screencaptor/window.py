@@ -36,9 +36,9 @@ class Window(Base):
         self.root.withdraw()
         self.root.mainloop()
 
-    def next_button(self, command):
+    def next_button(self, command, mode):
         next_button = tkinter.Button(
-            self.root, text='次へ [F12]', width=15, background='#ff6b91', foreground='#FFFFFF', font=("MSゴシック", 15), command=command)
+            self.root, text='次へ [F12]', width=15, background='#ff6b91', foreground='#FFFFFF', font=("MSゴシック", 15), command=lambda:command(mode))
         next_button.grid(row=1, column=1, sticky=tkinter.E, padx=20, pady=5)
 
     def rollback_button(self, command):
